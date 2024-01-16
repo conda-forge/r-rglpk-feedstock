@@ -1,4 +1,4 @@
-{% set version = "0.6-5" %}
+{% set version = "0.6-5.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +10,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Rglpk_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Rglpk/Rglpk_{{ version }}.tar.gz
-  sha256: aaeffc005a8febfe3422c8ae1347d5e17ea84320b959358670bb1083d6b57ca1
+  sha256: e528b8c487e9dfef16ade3b834a17fc93cc898869978a5dd79bee2c5bf9cb6c9
   patches:
     - patches/0001-force-conftest.so.patch
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
