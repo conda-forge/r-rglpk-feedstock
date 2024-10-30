@@ -1,6 +1,5 @@
 {% set version = "0.6-5.1" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rglpk
@@ -13,10 +12,10 @@ source:
   sha256: e528b8c487e9dfef16ade3b834a17fc93cc898869978a5dd79bee2c5bf9cb6c9
   patches:
     - patches/0001-force-conftest.so.patch
+    - patches/0002-minimal-ucrt-libs.patch
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -24,7 +23,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -42,7 +43,6 @@ requirements:
     - glpk
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-slam >=0.1_9
     - glpk
 
@@ -55,7 +55,6 @@ about:
   home: http://R-Forge.R-project.org/projects/rglp/, http://www.gnu.org/software/glpk/
   license: GPL-2.0-or-later
   summary: R interface to the GNU Linear Programming Kit. 'GLPK' is open source software for solving large-scale linear programming (LP), mixed integer linear programming ('MILP') and other related problems.
-  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3

@@ -1,0 +1,22 @@
+From 3d16a3d4209bb16cee01a243d5ae4bc8f53cc58d Mon Sep 17 00:00:00 2001
+From: Daniel Nachun <daniel.nachun@gmail.com>
+Date: Wed, 30 Oct 2024 00:56:25 -0700
+Subject: [PATCH] minimal ucrt libs
+
+---
+ src/Makevars.win | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makevars.win b/src/Makevars.win
+index 313ee20..6c05be7 100755
+--- a/src/Makevars.win
++++ b/src/Makevars.win
+@@ -2,4 +2,4 @@
+ #
+ 
+ PKG_CPPFLAGS=-D_R_=1 -DUSE_R=1 -I${GLPK_HOME}/include -DCHECK_GLPK_ARGS
+-PKG_LIBS=-L${GLPK_HOME}/lib -lglpk -lgmp
++PKG_LIBS=-L${GLPK_HOME}/lib -lglpk
+-- 
+2.47.0
+
