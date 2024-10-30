@@ -12,6 +12,7 @@ source:
   sha256: e528b8c487e9dfef16ade3b834a17fc93cc898869978a5dd79bee2c5bf9cb6c9
   patches:
     - patches/0001-force-conftest.so.patch
+    - patches/0002-minimal-ucrt-libs.patch
 
 build:
   number: 1
@@ -54,7 +55,6 @@ about:
   home: http://R-Forge.R-project.org/projects/rglp/, http://www.gnu.org/software/glpk/
   license: GPL-2.0-or-later
   summary: R interface to the GNU Linear Programming Kit. 'GLPK' is open source software for solving large-scale linear programming (LP), mixed integer linear programming ('MILP') and other related problems.
-  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
