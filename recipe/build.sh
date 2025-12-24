@@ -1,7 +1,10 @@
 #!/bin/bash
 
+set -o xtrace -o nounset -o pipefail -o errexit
+
 if [[ ${build_platform} != ${target_platform} ]]; then
     # configure script fails but we can just substitute in correct values manually
+    rm configure
     sed -e "s|@GLPK_INCLUDE_PATH@||" \
     -e "s|@GLPK_LIB_PATH@||" \
     -e "s|@GLPK_LIBS@|-lglpk|" \
