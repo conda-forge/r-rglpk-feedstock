@@ -1,7 +1,12 @@
 #!/bin/bash
 
 if [[ ${build_platform} != ${target_platform} ]]; then
-    sed -i 's/R_HOME/BUILD_PREFIX/' configure
+    # configure script fails but we can just substitute in correct values manually
+    sed -e "s|@GLPK_INCLUDE_PATH@||" \
+    -e "s|@GLPK_LIB_PATH@||" \
+    -e "s|@GLPK_LIBS@|-lglpk|" \
+    -e "s|@GLPK_TS@||" \
+    src/Makevars.in > src/Makevars
 fi
 
 export DISABLE_AUTOBREW=1

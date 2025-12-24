@@ -37,6 +37,7 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-slam >=0.1_9
   host:
     - r-base
     - r-slam >=0.1_9
